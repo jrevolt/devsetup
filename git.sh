@@ -13,8 +13,11 @@ withlog() {
   "$@" >> ~/devsetup.log 2>&1
 }
 
-pact remove git
-pact install make autoconf python perl tcl curl gettext gcc-g++ libcurl-devel libexpat-devel libiconv gettext-devel libiconv-devel cygwin64-libiconv
+echo "For progress details, see ~/devsetup.log"
+
+echo "Updating dependencies..."
+withlog pact remove git
+withlog pact install make autoconf python perl tcl curl gettext gcc-g++ libcurl-devel libexpat-devel libiconv gettext-devel libiconv-devel cygwin64-libiconv
 
 echo "Downloading Git..."
 curl -s $sources | tar xJv && cd git-${version} && (
