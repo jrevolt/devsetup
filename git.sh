@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version=2.7.0
+version=2.7.1
 sources="https://www.kernel.org/pub/software/scm/git/git-${version}.tar.xz"
 manpages="https://www.kernel.org/pub/software/scm/git/git-manpages-${version}.tar.xz"
 
