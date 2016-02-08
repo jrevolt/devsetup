@@ -11,8 +11,9 @@ cd $workdir
 pact remove git
 pact install make autoconf python perl tcl curl gettext gcc-g++ libcurl-devel libexpat-devel libiconv gettext-devel libiconv-devel cygwin64-libiconv
 
-echo "Downloading, building and installing Git..."
+echo "Downloading Git..."
 curl -s $sources | tar xJv && cd git-${version} && (
+  echo "Building and installing Git..." >&2
   make configure && ./configure --prefix=/usr
   make -i && make -i install 
 ) >> ~/devsetup.log
