@@ -20,13 +20,13 @@ withlog pact remove git
 withlog pact install make autoconf python perl tcl curl gettext gcc-g++ libcurl-devel libexpat-devel libiconv gettext-devel libiconv-devel cygwin64-libiconv
 
 echo "Downloading Git..."
-curl -s $sources | tar xJv && cd git-${version} && (
+curl -s $sources | withlogs tar xJv && cd git-${version} && (
   echo "Building and installing Git... (for progress details, see ~/devsetup.log)"
   withlog make configure
   withlog ./configure --prefix=/usr
   withlog make -i 
   withlog make -i install 
-)
+) 
 
 echo "Downloading Git docs..."
 curl -s $manpages | withlogs tar xJv -C /usr/share/man --no-same-owner --no-overwrite-dir
