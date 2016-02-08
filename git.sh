@@ -21,7 +21,7 @@ withlog pact install make autoconf python perl tcl curl gettext gcc-g++ libcurl-
 
 echo "Downloading Git..."
 curl -s $sources | withlog tar xJv && cd git-${version} && (
-  echo "Building and installing Git... (for progress details, see ~/devsetup.log)"
+  echo "Building and installing Git..."
   withlog make configure
   withlog ./configure --prefix=/usr
   withlog make -i 
