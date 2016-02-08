@@ -8,18 +8,25 @@ workdir="$(mktemp -d)"
 
 cd $workdir
 
+withlog() {
+  echo "### $@" >> ~/devsetup.log
+  "$@" >> ~/devsetup.log 2>&1
+}
+
 pact remove git
 pact install make autoconf python perl tcl curl gettext gcc-g++ libcurl-devel libexpat-devel libiconv gettext-devel libiconv-devel cygwin64-libiconv
 
 echo "Downloading Git..."
 curl -s $sources | tar xJv && cd git-${version} && (
-  echo "Building and installing Git... (for progress details, see ~/devsetup.log)" >&2
-  make configure && ./configure --prefix=/usr
-  make -i && make -i install 
-) >> ~/devsetup.log
+  echo "Building and installing Git... (for progress details, see ~/devsetup.log)"
+  withlog make configure
+  withlog ./configure --prefix=/usr
+  withlog make -i 
+  withlog make -i install 
+)
 
-echo "Installing Git docs..."
-curl -s $manpages | tar xJv -C /usr/share/man --no-same-owner --no-overwrite-dir >> ~/devsetup.log
+echo "Downloading Git docs..."
+curl -s $manpages | withlogs tar xJv -C /usr/share/man --no-same-owner --no-overwrite-dir
 
 git clone --recursive https://github.com/nvie/gitflow.git && cd gitflow && make install prefix=/usr
 
