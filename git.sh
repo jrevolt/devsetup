@@ -11,14 +11,15 @@ cd $workdir
 pact remove git
 pact install make autoconf python perl tcl curl gettext gcc-g++ libcurl-devel libexpat-devel libiconv gettext-devel libiconv-devel cygwin64-libiconv
 
+echo "Downloading, building and installing Git..."
 curl -s $sources | tar xJv && cd git-${version} && (
   make configure && ./configure --prefix=/usr
   make -i && make -i install 
-)
-curl -s $manpages \
-  | tar xJv -C /usr/share/man --no-same-owner --no-overwrite-dir
-  
-git --version
+) >> ~/devsetup.log
+
+echo "Installing Git docs..."
+curl -s $manpages | tar xJv -C /usr/share/man --no-same-owner --no-overwrite-dir >> ~/devsetup.log
 
 git clone --recursive https://github.com/nvie/gitflow.git && cd gitflow && make install prefix=/usr
 
+echo "DONE. Git version: $(git --version)"
