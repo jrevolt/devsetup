@@ -13,7 +13,7 @@ pact install make autoconf python perl tcl curl gettext gcc-g++ libcurl-devel li
 
 echo "Downloading Git..."
 curl -s $sources | tar xJv && cd git-${version} && (
-  echo "Building and installing Git..." >&2
+  echo "Building and installing Git... (for progress details, see ~/devsetup.log)" >&2
   make configure && ./configure --prefix=/usr
   make -i && make -i install 
 ) >> ~/devsetup.log
