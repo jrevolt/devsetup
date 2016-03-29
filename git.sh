@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version="2.7.1"
+version="${GIT_VERSION:-2.8.0}"
 prefix="/usr/local"
 sources="https://www.kernel.org/pub/software/scm/git/git-${version}.tar.xz"
 manpages="https://www.kernel.org/pub/software/scm/git/git-manpages-${version}.tar.xz"
@@ -17,7 +17,6 @@ withlog() {
 echo "For progress details, see ~/devsetup.log"
 
 echo "Updating dependencies..."
-withlog pact remove git
 withlog pact install make autoconf python perl tcl curl gettext gcc-g++ libcurl-devel libexpat-devel libiconv gettext-devel libiconv-devel cygwin64-libiconv
 
 echo "Downloading Git..."
@@ -26,6 +25,7 @@ curl -s $sources | withlog tar xJv && cd git-${version} && (
   withlog make configure
   withlog ./configure --prefix="$prefix"
   withlog make -i 
+  withlog pact remove git
   withlog make -i install 
 ) 
 
