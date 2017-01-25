@@ -32,7 +32,7 @@ curl -s $sources | withlog tar xJv && cd git-${version} && (
 echo "Downloading Git docs..."
 curl -s $manpages | withlog tar xJv -C /usr/share/man --no-same-owner --no-overwrite-dir
 
-echo "Downloading and installing GitFlow..."
-withlog git clone --recursive https://github.com/nvie/gitflow.git && cd gitflow && withlog make install prefix="$prefix"
+#echo "Downloading and installing GitFlow..."
+#withlog git clone --recursive https://github.com/nvie/gitflow.git && cd gitflow && withlog make install prefix="$prefix"
 
 echo "DONE. Git version: $(git --version)"
