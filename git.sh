@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version="${GIT_VERSION:-2.11.0}"
+version="${GIT_VERSION:-2.12.1}"
 prefix="/usr/local"
 sources="https://www.kernel.org/pub/software/scm/git/git-${version}.tar.xz"
 manpages="https://www.kernel.org/pub/software/scm/git/git-manpages-${version}.tar.xz"
