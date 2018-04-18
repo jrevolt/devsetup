@@ -2,3 +2,4 @@
 iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 choco install -y cygwin
 start /wait c:\tools\cygwin\cygwinsetup.exe -q -P curl,wget,git
+cygwin
