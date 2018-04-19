@@ -21,7 +21,7 @@ cd $HOME || fail "Missing $HOME"
 
 echo "### Backup existing files..."
 for i in $(find -type f -printf '%P\n'); do
-  [ -f "${WHOME}/${i}" ] && mv -v "${WHOME}/${i}" "${WHOME}/${i}.${timestamp}" || fail "Cannot backup ${WHOME}/${i}"
+  [ -f "${WHOME}/${i}" ] && { mv -v "${WHOME}/${i}" "${WHOME}/${i}.${timestamp}" || fail "Cannot backup ${WHOME}/${i}" }
 done
 
 echo "## Relocating..."
