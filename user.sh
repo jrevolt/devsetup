@@ -2,7 +2,7 @@
 
 if [[ -d $HOME ]]; then
   cd $HOME
-  WHOME="/c/Users/$(whoami)"
+  WHOME="/cygdrive/c/Users/$(whoami)"
   echo "Relocating $HOME -> $WHOME"
   timestamp="$(date +%Y%m%d-%H%M%S)"
   for i in $(find -type f); do
