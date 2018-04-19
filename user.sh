@@ -19,3 +19,4 @@ rm -rf $HOME
 ln -s $WHOME $HOME
 ls -lad $HOME
 
+echo "DONE"
