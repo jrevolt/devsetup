@@ -1,6 +1,7 @@
 #!/bin/bash
 
 if [[ -d $HOME ]]; then
+  cd $HOME
   WHOME="/c/Users/$(whoami)"
   echo "Relocating $HOME -> $WHOME"
   timestamp="$(date +%Y%m%d-%H%M%S)"
