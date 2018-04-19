@@ -11,25 +11,22 @@ fi
 
 WHOME="/cygdrive/c/Users/$(whoami)"
 
-#QDH
-WHOME="$WHOME/QDH"
-mkdir -p $WHOME
-
 echo "## Relocating $HOME -> $WHOME"
 timestamp="$(date +%Y%m%d-%H%M%S)"
-cd $HOME || fail "Missing $HOME"
 
 echo "### Backup existing files..."
+cd $HOME || fail
 for i in $(find -type f -printf '%P\n'); do
   [ -f "${WHOME}/${i}" ] && (mv -v "${WHOME}/${i}" "${WHOME}/${i}.${timestamp}" || fail "Cannot backup ${WHOME}/${i}")
 done
 
 echo "## Relocating..."
+cd $HOME || fail
 for i in $(find -type f -printf '%P\n'); do
   mkdir -p "${WHOME}/$(dirname $i)"
   mv -v "$i" "${WHOME}/${i}" || fail "Cannot relocate ${i}"
 done
-cd / && rmdir $HOME && ln -s $WHOME $HOME
+(cd / && rmdir $HOME && ln -s $WHOME $HOME) || fail "Failed to create symlink $HOME->$WHOME"
 
 echo "## DONE"
 ls -lad $HOME
