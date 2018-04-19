@@ -29,7 +29,7 @@ for i in $(find -type f -printf '%P\n'); do
   mkdir -p "${WHOME}/$(dirname $i)"
   mv -v "$i" "${WHOME}/${i}" || fail "Cannot relocate ${i}"
 done
-cd / && rmdir $HOME && ln -sv $WHOME $HOME
+cd / && rmdir $HOME && ln -s $WHOME $HOME
 
 echo "## DONE"
 ls -lad $HOME
