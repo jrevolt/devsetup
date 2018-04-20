@@ -13,4 +13,5 @@ echo "## Installing oh-my-zsh..."
 curl -sL rawgit.com/robbyrussell/oh-my-zsh/master/tools/install.sh | bash
 
 echo "## Enabling ZSH for user $(whoami)..."
+[ -f /etc/passwd ] && mv -v /etc/passwd /etc/passwd.${timestamp}
 mkpasswd -c | sed 's/bash$/zsh/' > /etc/passwd
