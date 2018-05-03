@@ -1,9 +1,5 @@
 #!/bin/bash
 
-rm -rf /http*
-/cygdrive/c/tools/cygwin/cygwinsetup.exe -q --wait --packages curl,wget
-rm -rf /http*
-
 timestamp="$(date +%Y%m%d-%H%M%S)"
 
 echo "## Installing apt-cyg utility..."
