@@ -14,3 +14,6 @@ c:\tools\cygwin\bin\bash.exe -lc "rm -rf /http*; /cygdrive/c/tools/cygwin/cygwin
 
 # run customizations
 c:\tools\cygwin\bin\bash.exe -lc "curl -sL rawgit.com/jrevolt/devsetup/master/custom.sh | bash"
+
+# cleanup
+c:\tools\cygwin\bin\bash.exe -lc "rm -rf /http*"
