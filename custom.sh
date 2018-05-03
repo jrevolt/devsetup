@@ -5,9 +5,6 @@ timestamp="$(date +%Y%m%d-%H%M%S)"
 echo "## Installing apt-cyg utility..."
 curl -sL rawgit.com/transcode-open/apt-cyg/master/apt-cyg > /bin/apt-cyg && chmod +x /bin/apt-cyg
 
-echo "## Installing Git, Zsh..."
-apt-cyg install git zsh
-
 echo "## Relocating user home..."
 curl -sL rawgit.com/jrevolt/devsetup/master/user.sh | bash
 
