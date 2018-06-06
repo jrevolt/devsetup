@@ -15,3 +15,9 @@ curl -sL rawgit.com/robbyrussell/oh-my-zsh/master/tools/install.sh | bash
 echo "## Enabling ZSH for user $(whoami)..."
 [ -f /etc/passwd ] && mv -v /etc/passwd /etc/passwd.${timestamp}
 mkpasswd -c | sed 's/bash$/zsh/' > /etc/passwd
+
+echo "## Installing winpty..."
+[ -f /usr/local/bin/winpty ] && echo "... already installed!" || \
+  curl -sL https://github.com/rprichard/winpty/releases/download/0.4.3/winpty-0.4.3-cygwin-2.8.0-x64.tar.gz \
+    | tar xzv --strip-components=2 -C /usr/local/bin winpty-0.4.3-cygwin-2.8.0-x64/bin
+    
